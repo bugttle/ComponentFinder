@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 namespace ComponentFinder
 {
@@ -37,10 +37,13 @@ namespace ComponentFinder
             EditorGUILayout.BeginVertical();
             foreach (var component in resultComponents)
             {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.ObjectField(component, typeof(Component), false);
-                EditorGUILayout.LabelField(component.GetType().ToString());
-                EditorGUILayout.EndHorizontal();
+                if (component != null)
+                {
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.ObjectField(component, typeof(Component), false);
+                    EditorGUILayout.LabelField(component.GetType().ToString());
+                    EditorGUILayout.EndHorizontal();
+                }
             }
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndScrollView();
